@@ -76,10 +76,16 @@ This creates `node_modules/` with all packages from `package.json`.
 ### Step 5: Start Development Server
 
 ```bash
+# Option 1: Use the dev script (recommended - handles nvm automatically)
+./scripts/dev.sh
+
+# Option 2: Direct npm command
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+**Tip:** The `./scripts/dev.sh` script automatically loads the correct Node.js version via nvm, so you don't need to run `nvm use` first.
 
 ---
 
@@ -330,6 +336,23 @@ npm run dev -- -H 0.0.0.0
 ## Helper Scripts
 
 The `scripts/` directory contains helpful utilities:
+
+### Local Dev Server (`scripts/dev.sh`)
+
+Start the local development server with proper nvm configuration.
+
+**Usage:**
+```bash
+./scripts/dev.sh
+```
+
+This script:
+- Loads nvm to ensure correct Node.js version
+- Shows current Node.js and npm versions
+- Starts the Next.js dev server on all network interfaces (0.0.0.0)
+- Server will be accessible at http://localhost:3000 or http://YOUR_IP:3000
+
+**Note:** This runs in the foreground. Press Ctrl+C to stop the server.
 
 ### Flickr URL Converter (`scripts/flickr-url.sh`)
 

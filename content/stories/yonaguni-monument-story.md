@@ -12,7 +12,9 @@ publishedAt: "2024-03-08"
 
 I first learned about the Yonaguni Monument through Graham Hancock's work. If you've read his books, you know what I'm talking about - he opens your eyes to this idea that we're "a species with amnesia." We've forgotten huge chunks of our own history. Yonaguni was one of those mysteries he wrote about, and it stuck with me.
 
-Back in 1986, a local dive operator named Kihachiro Aratake found something incredible 25 meters underwater off Japan's westernmost island. Massive rock formations with terraces, steps, platforms, and walls that have these crazy sharp edges and right angles. Too geometric to just be random rocks, you know?
+The story goes that in 1986, a dive operator named Kihachiro Aratake claimed to have "discovered" these structures, bringing them to wider attention as a dive spot. But the truth is murky. Local people probably knew about these formations long before - they'd been there forever. Aratake's claim is more about making it famous for diving rather than actually discovering something nobody knew existed. That's the thing with these underwater sites - the real history of who knew what and when gets lost.
+
+What's undeniable though: 25 meters underwater off Japan's westernmost island, there are massive rock formations with terraces, steps, platforms, and walls that have these crazy sharp edges and right angles. Too geometric to just be random rocks, you know?
 
 Reading about it was one thing. But actually standing on Yonaguni Island, knowing this thing was right beneath those waves - something that could completely change how we think about ancient civilizations - I had to see it myself.
 
@@ -24,7 +26,7 @@ And honestly? I wasn't even certified yet. So I just stood there, staring at the
 
 That's actually one of the main reasons I got my diving license. I needed to come back. I needed to see this thing with my own eyes, not just in books or documentaries.
 
-I learned something important that first trip: you can't just show up at Yonaguni and hope for the best. Planning matters. Timing matters. Summer is terrible - strong winds and currents make it impossible or just plain dangerous. The best time is late autumn through early spring when the sea calms down.
+I learned something important that first trip: you can't just show up at Yonaguni and hope for the best. Planning matters. Timing matters. Summer can be rough - strong winds and currents often make conditions challenging. People do dive it then on good days, but it's not the best known season. Late autumn through early spring is when conditions are typically more favorable and consistent.
 
 When I finally returned - certified, prepared, and during the right season - the monument was still there waiting. This time, nothing was going to stop me.
 
