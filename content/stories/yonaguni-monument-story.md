@@ -10,7 +10,7 @@ publishedAt: "2024-03-08"
 
 ## How It Started
 
-I first learned about the Yonaguni Monument through Graham Hancock's work. If you've read his books, you know what I'm talking about - he opens your eyes to this idea that we're "a species with amnesia." We've forgotten huge chunks of our own history. Yonaguni was one of those mysteries he wrote about, and it stuck with me.
+I first learned about the Yonaguni Monument through Graham Hancock's work. If you've read his books, you know what I'm talking about - he opens your eyes to this idea that we're "a species of amnesia." We've forgotten huge chunks of our own history. Yonaguni was one of those mysteries he wrote about, and it stuck with me.
 
 The story goes that in 1986, a dive operator named Kihachiro Aratake claimed to have "discovered" these structures, bringing them to wider attention as a dive spot. But the truth is murky. Local people probably knew about these formations long before - they'd been there forever. Aratake's claim is more about making it famous for diving rather than actually discovering something nobody knew existed. That's the thing with these underwater sites - the real history of who knew what and when gets lost.
 
@@ -38,13 +38,13 @@ When the structure came into view through the haze, I just stopped and stared. M
 
 Swimming along these walls and platforms, I couldn't shake the feeling I was looking at something people built. The current kept pushing me, but I held on, running my hands along surfaces that felt way too smooth, way too straight to be natural.
 
-## A Species with Amnesia
+## A Species of Amnesia
 
 The official scientific story? Natural formation. Just erosion and tectonic shifts over time. But a lot of researchers disagree. Masaaki Kimura, a marine geologist who's studied this site for decades, believes it shows clear evidence of human work. Some think it could be 10,000 years old or more - from back when sea levels were way lower, before the last ice age ended.
 
 If that's true, it means there was an advanced civilization way earlier than mainstream archaeology is willing to admit. And that's exactly what Graham Hancock has been saying for years - that there were sophisticated cultures in our ancient past, but their achievements got lost. Buried under rising seas, destroyed by catastrophes, forgotten.
 
-We're a species with amnesia. We've forgotten our own story. Places like Yonaguni are the fragments left behind - clues to civilizations that existed and then vanished before what we call "civilization" even started.
+We're a species of amnesia. We've forgotten our own story. Places like Yonaguni are the fragments left behind - clues to civilizations that existed and then vanished before what we call "civilization" even started.
 
 Swimming through that place, I felt it. All those lost thousands of years. How much have we forgotten? What knowledge is just gone, swallowed by the ocean? What could our ancestors do that we're only now starting to figure out again?
 
