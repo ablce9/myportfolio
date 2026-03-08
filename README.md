@@ -229,50 +229,60 @@ Thumbnail: https://live.staticflickr.com/65535/12345_abc123_q.jpg
    ---
    ```
 
-3. **Commit and deploy**:
+3. **Deploy**:
    ```bash
-   git add -A
-   git commit -m "Add tokyo-sunset image"
-   rsync -avz ./ tangerine@192.168.1.186:.w/myportfolio/
+   ./scripts/deploy.sh "Add tokyo-sunset image"
    ```
 
 ### Adding a "Behind the Image" Story
 
-1. **Create story file** at `content/stories/your-story.md`:
+Stories are displayed at `/behind-the-image` and provide long-form content about the images. They support full markdown formatting.
+
+1. **Make sure the image exists first** - Stories reference image slugs, so create the image metadata file in `content/images/` first
+
+2. **Create story file** at `content/stories/your-story.md`:
    ```markdown
    ---
    title: "The Story Behind Tokyo Sunset"
-   slug: "behind-tokyo-sunset"
-   coverImage: "tokyo-sunset"
-   relatedImages:
+   slug: "your-story-slug"
+   coverImage: "tokyo-sunset"          # Must match an existing image slug
+   relatedImages:                       # Optional - other related images
      - "tokyo-night"
      - "tokyo-tower"
    publishedAt: "2024-01-22"
    ---
 
-   ## The Inspiration
+   ## Section Title
 
-   Write about what inspired this shot...
+   Write your story in markdown. You can use:
+   - **Bold** and *italic* text
+   - Links, lists, blockquotes
+   - Multiple sections with ## headings
+   - Paragraphs separated by blank lines
 
-   ## The Process
+   ## Another Section
 
-   Describe your creative process...
-
-   ## The Result
-
-   Reflect on the final image...
+   Tell the full story behind the image...
    ```
 
-2. **Commit and deploy**
+3. **Deploy using the quick deploy script**:
+   ```bash
+   ./scripts/deploy.sh "Add new story: Tokyo Sunset"
+   ```
+
+**Story Features:**
+- Full markdown rendering (headings, lists, links, emphasis, blockquotes)
+- Cover image with lightbox support
+- Related images section at the bottom
+- Automatic static page generation
+- Mobile-responsive layout
 
 ### Updating Content
 
 1. Edit the markdown file
-2. Commit and deploy:
+2. Deploy:
    ```bash
-   git add -A
-   git commit -m "Update: description"
-   rsync -avz ./ tangerine@192.168.1.186:.w/myportfolio/
+   ./scripts/deploy.sh "Update: description"
    ```
 
 ### Deleting Content
@@ -283,7 +293,7 @@ Thumbnail: https://live.staticflickr.com/65535/12345_abc123_q.jpg
 ### Workflow Summary
 
 ```
-Upload to Flickr → Create .md file → Git commit → Rsync → Refresh browser
+Upload to Flickr → Create .md file → ./scripts/deploy.sh "message" → Refresh browser
 ```
 
 ### Refreshing the Site After Content Updates
@@ -317,34 +327,98 @@ npm run dev -- -H 0.0.0.0
 
 ---
 
+## Helper Scripts
+
+The `scripts/` directory contains helpful utilities:
+
+### Flickr URL Converter (`scripts/flickr-url.sh`)
+
+Converts Flickr embed codes or URLs into the format needed for content markdown files.
+
+**Usage:**
+```bash
+# From Flickr embed code (use single quotes!)
+./scripts/flickr-url.sh '<a data-flickr-embed="true" href="..."><img src="..."></a>'
+
+# From direct Flickr URL
+./scripts/flickr-url.sh 'https://live.staticflickr.com/65535/12345_abc_b.jpg'
+```
+
+**Output:**
+```
+image: "https://live.staticflickr.com/65535/12345_abc_b.jpg"
+thumbnail: "https://live.staticflickr.com/65535/12345_abc_q.jpg"
+```
+
+**Important:** Always use **single quotes** when pasting Flickr embed code (not double quotes), otherwise the shell will misinterpret the HTML quotes.
+
+### Deploy Script (`scripts/deploy.sh`)
+
+One-command deployment: commits changes, syncs to server, and restarts dev server.
+
+```bash
+./scripts/deploy.sh "Your commit message"
+```
+
+This is the **recommended way** to deploy changes. See "Development Workflow" below for details.
+
+### AWS Deploy Script (`scripts/aws-deploy.sh`)
+
+Deploy to AWS S3 static hosting:
+```bash
+./scripts/aws-deploy.sh up    # Build and deploy
+./scripts/aws-deploy.sh sync  # Sync files without rebuild
+./scripts/aws-deploy.sh down  # Delete S3 resources
+```
+
+---
+
 ## Development Workflow
 
-After making changes, commit and sync to the remote server:
+### Option 1: Quick Deploy Script (Recommended)
+
+Use the deploy script for a one-step deployment:
+
+```bash
+./scripts/deploy.sh "Your commit message"
+```
+
+This automatically:
+1. Stages all changes (`git add -A`)
+2. Commits with your message
+3. Pushes to git repository
+4. SSH to server and pulls changes
+5. Installs dependencies if needed
+6. Restarts the dev server
+
+### Option 2: Manual Deployment
+
+After making changes, commit and push to git, then pull on the server:
 
 ```bash
 # 1. Stage and commit changes
 git add -A
 git commit -m "Your commit message"
 
-# 2. Sync to remote server (exclude .next to avoid cache conflicts)
-rsync -avz --exclude='.next' ./ tangerine@192.168.1.186:.w/myportfolio/
+# 2. Push to git repository
+git push
+
+# 3. SSH to server and pull changes
+ssh tangerine@192.168.1.186
+cd .w/myportfolio
+git pull
+npm install  # If dependencies changed
+exit
+
+# 4. Restart dev server (if needed)
+ssh tangerine@192.168.1.186 "pkill -f 'next dev'"
+ssh tangerine@192.168.1.186 "cd .w/myportfolio && nvm use && npm run dev -- -H 0.0.0.0 &"
 ```
 
-**Note:** `.next` is excluded because build cache from one machine causes errors on another.
-
-### Quick Deploy Script
-
-Use the included deploy script to commit, sync, and restart the server in one command:
-
-```bash
-./scripts/deploy.sh "Add new gallery images"
-```
-
-This script:
-1. Stages all changes
-2. Commits with your message
-3. Syncs to remote server (excluding `.next`)
-4. Restarts the dev server
+**When to use manual deployment:**
+- When you need fine-grained control over git commits
+- When you're making multiple commits before deploying
+- For debugging deployment issues
 
 ---
 
@@ -362,3 +436,42 @@ This script:
 - **Content:** File-based (Markdown)
 - **Images:** Flickr (CDN)
 - **Deployment:** AWS (S3 + CloudFront) or local server
+- **Markdown Rendering:** react-markdown
+
+## Technical Implementation
+
+### Content System
+
+All content is file-based using markdown with frontmatter:
+
+- **Images**: `content/images/*.md` - Image metadata (URLs, title, location, tags)
+- **Stories**: `content/stories/*.md` - Long-form stories with full markdown support
+
+Content is loaded server-side using `gray-matter` to parse frontmatter and markdown content.
+
+### Stories Feature
+
+**Routes:**
+- `/behind-the-image` - Stories listing page
+- `/behind-the-image/[slug]` - Individual story page
+
+**Implementation:**
+- Stories are stored as markdown files in `content/stories/`
+- Front matter includes: `title`, `slug`, `coverImage` (references image slug), `relatedImages`, `publishedAt`
+- Story content is full markdown rendered with `react-markdown`
+- Related images are displayed at the bottom of each story
+- Static pages are generated at build time using `generateStaticParams()`
+
+**Content Functions** (`src/lib/content.ts`):
+- `getStories()` - Returns all stories sorted by date
+- `getStoryBySlug(slug)` - Fetches individual story
+- `getImages()` - Returns all images
+- `getImageBySlug(slug)` - Fetches individual image
+
+### Deployment Flow
+
+1. **Local development**: Make changes, test locally
+2. **Commit and push**: `./scripts/deploy.sh "message"` commits, pushes to git
+3. **Server pull**: Script SSH to server, runs `git pull` and `npm install`
+4. **Restart**: Dev server is restarted to pick up changes
+5. **View**: Changes visible at http://192.168.1.186:3000
